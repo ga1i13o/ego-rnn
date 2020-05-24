@@ -13,9 +13,10 @@ class twoStreamAttentionModel(nn.Module):
         self.frameModel = attentionModel(num_classes, memSize)
         if frameModel != '':
             self.frameModel.load_state_dict(torch.load(frameModel))
-        self.fc2 = nn.Linear(512 * 2, num_classes, bias=True)
-        self.dropout = nn.Dropout(0.5)
-        self.classifier = nn.Sequential(self.dropout, self.fc2)
+        self.classifier = nn.Sequential(
+            nn.Dropout(0.5),
+            nn.Linear(512 * 2, num_classes, bias=True)
+        )
 
     def forward(self, inputVariableFlow, inputVariableFrame):
         _, flowFeats = self.flowModel(inputVariableFlow)
