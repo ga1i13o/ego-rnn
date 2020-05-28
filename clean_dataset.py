@@ -12,5 +12,5 @@ def clean_data(directory):
         if os.path.isdir(d):
             clean_data(d)
 
-root = "/home/utente/Scaricati/program/ML_DL/FPAR/GTEA61/processed_frames2"#/open_chocolate/1/rgb/rgb0027.png"
+root = "/home/utente/Scaricati/program/ML_DL/FPAR/GTEA61"
 clean_data(root)
